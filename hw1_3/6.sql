@@ -1,0 +1,1 @@
+select department_id, max(salary), min(salary), max(salary) - min(salary) from employees group by department_id;

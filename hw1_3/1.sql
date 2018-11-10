@@ -1,0 +1,1 @@
+select last_name, first_name, salary from employees where (select max(salary) from employees where job_id = 'SH_CLERK') < salary;
