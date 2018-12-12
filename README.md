@@ -103,6 +103,23 @@
 
 5. 1번 사용자에게서 모든 권한을 제거하여라.
 
+### hw6_1
+다음 기능을 하는 프로그램을 작성하시오.
+
+- hw4_1에서 생성한 사용자 emp_user를 사용하여 employees 데이터베이스에 접속하시오.(employees 데이터베이스에 권한이 주어져야 한다.)
+
+1. 직원의 id와 이름, 이메일을 출력하라
+
+예)
+......
+205 Hermann Baer HBAER
+206 William Gietz WGIETZ
+......
+
+2. last name이 Gietz인 직원을 삭제하시오.
+
+3. 직원의 id와 이름, 이메일을 출력하라
+
 ### hw6_3
 1. user를 추가하시오. id: puser@localhost, 암호:1234
 
