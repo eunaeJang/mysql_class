@@ -1,0 +1,51 @@
+package hw6_1;
+
+import java.sql.*;
+
+public class DbConnect {
+	public static Connection makeConnection() {
+		String url = "jdbc:mysql://localhost:3306/employees?useSSL=false";
+		Connection con = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver"); 
+			System.out.println("데이터베이스 연결중 ...");
+			con = DriverManager.getConnection(url, "emp_user", "test123"); 
+			System.out.println("데이터베이스 연결 성공");
+		} catch (ClassNotFoundException e) {
+			System.out.println("JDBC 드라이버를 찾지 못했습니다...");
+		} catch (SQLException e) {
+			System.out.println("데이터베이스 연결 실패"); 
+		}
+		return con; 
+
+
+	}
+
+	public static void main(String[] args) throws SQLException {
+		// TODO Auto-generated method stub
+		Connection con = makeConnection();
+		Statement stmt = con.createStatement();
+		
+		String selectSql1 = "select employee_id, first_name, last_name, email from employees";	
+		ResultSet rs1 = stmt.executeQuery(selectSql1);
+		while(rs1.next()){ 
+			System.out.format("%s %s %s %s\n",rs1.getString(1), rs1.getString(2),rs1.getString(3),rs1.getString(4)); 
+		} 
+		
+		String deleteSql = "delete from employees where last_name = \"Gietz\"";
+		stmt.executeUpdate(deleteSql);
+		
+		System.out.println("---------------------------------------------");
+		String selectSql2 = "select employee_id, first_name, last_name, email from employees";	
+		ResultSet rs2 = stmt.executeQuery(selectSql2);
+		while(rs2.next()){ 
+			System.out.format("%s %s %s %s\n",rs2.getString(1), rs2.getString(2),rs2.getString(3),rs2.getString(4)); 
+		} 
+		
+		
+
+		con.close();
+		stmt.close();
+		
+	}
+}
