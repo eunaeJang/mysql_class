@@ -1,0 +1,1 @@
+grant all on projects.* to 'puser'@'localhost';
